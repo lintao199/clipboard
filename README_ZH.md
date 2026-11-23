@@ -8,9 +8,23 @@
 
 <img src="examples.png">
 
-## 下载
+## 本地构建
 
-下载最新版本 [releases](https://github.com/Ineffable919/clipboard/releases/latest)
+此 fork 已移除上游自动更新、手动检查更新及 Sparkle 依赖。使用完整 Xcode 打开 `Clipboard.xcodeproj`，选择 Release 配置构建。后续更新需审查源码变更并重新本地编译。
+
+链接预览及 Markdown 预览中的远程图片保留原有联网行为。
+
+Apple Silicon 的 Release 构建命令（选中完整 Xcode 后，在仓库根目录执行）：
+
+```sh
+xcodebuild -project Clipboard.xcodeproj -scheme Clipboard \
+  -configuration Release -destination 'platform=macOS,arch=arm64' \
+  -derivedDataPath build -clonedSourcePackagesDirPath build/SourcePackages \
+  CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM= \
+  CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO build
+```
+
+产物位于 `build/Build/Products/Release/Clipboard.app`。该命令采用本地签名，并关闭调试权限的自动注入。
 
 ## 功能特性
 

@@ -245,9 +245,4 @@ extension HUDManager {
         let img = NSImage(systemSymbolName: "checkmark", accessibilityDescription: nil)
         show(icon: img, text: String(localized: "hudCopySucceeded"), textColor: .primary)
     }
-
-    func showPasteSucceeded() {
-        let img = NSImage(systemSymbolName: "checkmark", accessibilityDescription: nil)
-        show(icon: img, text: String(localized: "hudPasteSucceeded"), textColor: .primary)
-    }
 }

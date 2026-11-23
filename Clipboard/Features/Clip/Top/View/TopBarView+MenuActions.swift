@@ -7,11 +7,9 @@
 
 import AppKit
 import Combine
-import Sparkle
 
 @objc protocol TopBarMenuActions {
     func openSettingsAction()
-    func checkForUpdatesAction()
     func invokeHelpAction()
     func openNewTextItemAction()
     func openAboutAction()
@@ -29,10 +27,6 @@ import Sparkle
 extension TopBarView: TopBarMenuActions {
     func openSettingsAction() {
         SettingWindowController.shared.toggleWindow()
-    }
-
-    func checkForUpdatesAction() {
-        AppDelegate.shared?.updaterController.checkForUpdates(nil)
     }
 
     func invokeHelpAction() {

@@ -34,9 +34,9 @@ extension PasteBoard {
 
         PasteDataStore.main.moveItemsToFirst(items)
         SoundManager.shared.play(.paste)
-        if showTip {
+        if showTip && copy {
             Task { @MainActor in
-                copy ? HUDManager.shared.showCopySucceeded() : HUDManager.shared.showPasteSucceeded()
+                HUDManager.shared.showCopySucceeded()
             }
         }
     }

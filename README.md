@@ -7,9 +7,23 @@
 </p>
 <img src="examples.png">
 
-## Download
+## Local build
 
-Download the latest version [releases](https://github.com/Ineffable919/clipboard/releases/latest)
+This fork removes upstream automatic updates, manual update checks, and the Sparkle dependency. Open `Clipboard.xcodeproj` in the full Xcode application and build the Release configuration. To update, review the source changes and rebuild locally.
+
+Link previews and remote images in Markdown previews retain their existing network behavior.
+
+Apple Silicon Release build (run from the repository root with Xcode selected):
+
+```sh
+xcodebuild -project Clipboard.xcodeproj -scheme Clipboard \
+  -configuration Release -destination 'platform=macOS,arch=arm64' \
+  -derivedDataPath build -clonedSourcePackagesDirPath build/SourcePackages \
+  CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY=- DEVELOPMENT_TEAM= \
+  CODE_SIGN_INJECT_BASE_ENTITLEMENTS=NO build
+```
+
+The app is written to `build/Build/Products/Release/Clipboard.app`. This command uses a local signature and disables automatic injection of debugger permissions.
 
 
 ## Features
